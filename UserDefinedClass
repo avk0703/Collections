@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+ class Demo{
+	private String name,Address;
+	private long phno;
+	 
+	Demo(String n,String a,long p){
+		name=n;
+		Address=a;
+		phno=p;
+	}
+	
+	public String toString(){
+		return name+"\n"+Address+"\n"+phno;
+	}
+}
+/**
+ * @author Avni
+ *{@link UserDefinedClass}:Storing User-Defined Classes in Collections and depicting iteration over a HashMap
+ */
+public class UserDefinedClass {
+	public static void main(String args[]){
+		
+		HashMap<Integer, Demo> x=new HashMap<Integer, Demo>();
+		x.put(1,new Demo("Avni","Idr",67978678));
+		x.put(2,new Demo("Karan","Idr",67978678));
+		Set<Map.Entry<Integer, Demo>> set = x.entrySet();
+		for(Map.Entry<Integer, Demo> me : set) {
+			System.out.println();
+			System.out.println(me.getValue());
+			}
+	}
+}
