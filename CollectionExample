@@ -1,0 +1,542 @@
+import java.util.*;
+
+/**
+ * This is a collections class depicting the usage and the functioning of the
+ * Collection types in Java.
+ * 
+ * @author Avni
+ *
+ */
+public class CollectionExample {
+
+	
+	public static void main(String args[]) {
+		ArrayList<String> aList = new ArrayList<String>();
+		LinkedList<String> lList = new LinkedList<String>();
+		HashSet<String> hSet = new HashSet<String>();
+		LinkedHashSet<String> lhSet = new LinkedHashSet<String>();
+		TreeSet<String> tSet = new TreeSet<String>();
+		HashMap<Integer, String> hMap = new HashMap<Integer, String>();
+		TreeMap<Integer, String> tMap = new TreeMap<Integer, String>();
+		LinkedHashMap<Integer, String> lhMap = new LinkedHashMap<Integer, String>();
+
+		Scanner input = new Scanner(System.in);
+		
+		int x = 1, collectionSelector, option, subCollectionSelector, checkExistence = 1;
+		String str1, str2;
+		while (x == 1) {
+			System.out
+					.println("Select Your Option:\n1.List\n2.Set\n3.Map\n4.Exit\n");
+			collectionSelector = input.nextInt();
+			checkExistence=1;
+			switch (collectionSelector) {
+
+			case 1: {
+				System.out
+						.println("List Selected\nChoose from:\n1.ArrayList\n2.LinkedList\n");
+				subCollectionSelector = input.nextInt();
+				switch (subCollectionSelector) {
+				case 1: {
+					while (checkExistence == 1) {
+						System.out
+								.println("ArrayList :\n Option\n1.Add Element\n2.Remove Element\n3.Obtain Index\n4.Check existence of element");
+						System.out
+								.println("5.Replacing an element\n.6.Create a Sublist\n7.Exit from Array List");
+						option = input.nextInt();
+						switch (option) {
+						case 1: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							if (aList.add(str1))
+								System.out.println("\nString added!\n");
+
+							else
+								System.out.println("Error in adding!");
+							System.out.println(aList);
+							break;
+						}
+						case 2: {
+							System.out.println("Enter String to be removed:");
+							str1 = input.next();
+							if (aList.remove(str1)) {
+								System.out.println("\nString Removed\n");
+							} else
+								System.out.println("Faliure");
+							System.out.println(aList);
+							break;
+						}
+						case 3: {
+							System.out
+									.println("\nEnter String whose Index needs to be determined:");
+							str1 = input.next();
+							System.out.println("Index of '" + str1 + "' is :"
+									+ aList.indexOf(str1));
+							System.out.println(aList);
+							break;
+						}
+						case 4: {
+							System.out.println("Check element to be found:\n");
+							str1 = input.next();
+							if (aList.contains(str1))
+								System.out.println("Found at :"
+										+ aList.indexOf(str1));
+							else
+								System.out.println("Not Found!");
+							System.out.println(aList);
+							break;
+						}
+						case 5: {
+							System.out.println("Enter Element to be replaced:");
+							str1 = input.next();
+							int f = aList.indexOf(str1);
+							System.out
+									.println("Enter Element to be replaced with:");
+							str2 = input.next();
+							aList.set(f, str2);
+							System.out.println(aList);
+							break;
+						}
+						case 6: {
+							System.out.println(aList);
+							System.out.println("Enter the starting of subset:");
+							str1 = input.nextLine();
+							str1 = input.nextLine();
+							str1 = input.nextLine();
+							System.out
+									.println("Enter the ending of substring:");
+							str2 = input.nextLine();
+							System.out.println(aList.subList(
+									aList.indexOf(str1), aList.indexOf(str2)));
+							break;
+						}
+						case 7:
+							checkExistence = 0;
+						}
+					}
+					break;
+				}
+				case 2: {
+					while (checkExistence == 1) {
+						System.out
+								.println("LinkedList\n1.Add\n2.Remove\n3.Add at First\n4.Add at last\n5.Remove from first\n6.Remove from last\n7.Replace\n8.Exit from linked list");
+						option = input.nextInt();
+						checkExistence=1;
+						switch (option) {
+						case 1: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							if (lList.add(str1))
+								System.out.println("\nString added!\n");
+
+							else
+								System.out.println("Error in adding!");
+							System.out.println(lList);
+							break;
+						}
+						case 2: {
+							System.out.println("Enter String to be removed:");
+							str1 = input.next();
+							if (lList.remove(str1)) {
+								System.out.println("\nString Removed\n");
+							} else
+								System.out.println("Faliure");
+							System.out.println(lList);
+							break;
+						}
+						case 3: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							lList.addFirst(str1);
+							System.out.println(lList);
+							break;
+						}
+						case 4: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							lList.addLast(str1);
+							System.out.println(lList);
+							break;
+						}
+						case 5: {
+							lList.removeFirst();
+							System.out.println(lList);
+							break;
+						}
+						case 6: {
+							lList.removeLast();
+							System.out.println(lList);
+							break;
+						}
+						case 7: {
+							System.out.println("Enter Element to be replaced:");
+							str1 = input.next();
+							int f = lList.indexOf(str1);
+							System.out
+									.println("Enter Element to be replaced with:");
+							str2 = input.next();
+							lList.set(f, str2);
+							System.out.println(lList);
+							break;
+						}
+						case 8:
+							checkExistence = 0;
+						}
+					}
+					break;
+				}
+				}
+				break;
+			}
+			case 2: {
+				System.out
+						.println("Set Selected\n1.HashSet\n2.LinkedHashSet\n3.TreeSet\n");
+				checkExistence=1;
+				subCollectionSelector = input.nextInt();
+				switch (subCollectionSelector) {
+				case 1: {
+
+					System.out
+							.println("HashSet Selected\nChoose from following:");
+					while (checkExistence == 1) {
+						System.out
+								.println("1.Add\n2.Remove\n3.Check Existence\n4.View Hashcode\n5.View Size\n6.Exit HashSet");
+						option = input.nextInt();
+						switch (option) {
+						case 1: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							if (hSet.add(str1))
+								System.out.println("\nString added!\n");
+
+							else
+								System.out.println("Error in adding!");
+							System.out.println(hSet);
+							break;
+						}
+						case 2: {
+							System.out.println("Enter String to be removed:");
+							str1 = input.next();
+							if (hSet.remove(str1)) {
+								System.out.println("\nString Removed\n");
+							} else
+								System.out.println("Faliure");
+							System.out.println(hSet);
+							break;
+						}
+						case 3: {
+							System.out.println("Check element to be found:\n");
+							str1 = input.next();
+							if (hSet.contains(str1))
+								System.out.println("Found");
+							else
+								System.out.println("Not Found!");
+							System.out.println(hSet);
+							break;
+						}
+						case 4: {
+
+							System.out.println("Hash Code is:"
+									+ hSet.hashCode());
+							break;
+						}
+						case 5: {
+							System.out.println("Size is " + hSet.size());
+							break;
+						}
+						case 6: {
+							checkExistence = 0;
+							break;
+						}
+						}
+					}
+					break;
+				}
+				case 2: {
+					while (checkExistence == 1) {
+						System.out
+								.println("LinkedHashSet Selected\nChoose from Following option:");
+						System.out
+								.println("1.Add\n2.Remove\n3.Check Existence\n4.View Hashcode\n5.View Size\n6.Exit LinkedHashSet");
+						option = input.nextInt();
+						switch (option) {
+						case 1: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							if (lhSet.add(str1))
+								System.out.println("\nString added!\n");
+
+							else
+								System.out.println("Error in adding!");
+							System.out.println(lhSet);
+							break;
+						}
+						case 2: {
+							System.out.println("Enter String to be removed:");
+							str1 = input.next();
+							if (lhSet.remove(str1)) {
+								System.out.println("\nString Removed\n");
+							} else
+								System.out.println("Faliure");
+							System.out.println(lhSet);
+							break;
+						}
+						case 3: {
+							System.out.println("Check element to be found:\n");
+							str1 = input.next();
+							if (lhSet.contains(str1))
+								System.out.println("Found");
+							else
+								System.out.println("Not Found!");
+							System.out.println(lhSet);
+							break;
+						}
+						case 4: {
+
+							System.out.println("Hash Code is:"
+									+ lhSet.hashCode());
+							break;
+						}
+						case 5: {
+							System.out.println("Size is " + lhSet.size());
+							break;
+						}
+						case 6: {
+							checkExistence = 0;
+							break;
+						}
+						}
+					}
+					break;
+				}
+				case 3: {
+					while (checkExistence == 1) {
+						System.out
+								.println("TreeSet Selected:\nChoose From Following:\n");
+						System.out
+								.println("1.Add\n2.Remove\n3.Check Existence\n4.View Hashcode\n5.View Size\n6.Create Subset\n7.Exit TreeSet");
+						option = input.nextInt();
+						checkExistence=1;
+						switch (option) {
+						case 1: {
+							System.out.println("\nEnter String to be added: ");
+							str1 = input.next();
+							if (tSet.add(str1))
+								System.out.println("\nString added!\n");
+
+							else
+								System.out.println("Error in adding!");
+							System.out.println(tSet);
+							break;
+						}
+						case 2: {
+							System.out.println("Enter String to be removed:");
+							str1 = input.next();
+							if (tSet.remove(str1)) {
+								System.out.println("\nString Removed\n");
+							} else
+								System.out.println("Faliure");
+							System.out.println(tSet);
+							break;
+						}
+						case 3: {
+							System.out.println("Check element to be found:\n");
+							str1 = input.next();
+							if (tSet.contains(str1))
+								System.out.println("Found");
+							else
+								System.out.println("Not Found!");
+							System.out.println(tSet);
+							break;
+						}
+						case 4: {
+
+							System.out.println("Hash Code is:"
+									+ tSet.hashCode());
+							break;
+						}
+						case 5: {
+							System.out.println("Size is " + tSet.size());
+							break;
+						}
+						case 6: {
+							System.out.println("Starting string:");
+							str1 = input.next();
+							str1 = input.next();
+							System.out.println("Ending String:");
+							str2 = input.next();
+							System.out.println("SubSet:"
+									+ tSet.subSet(str1, str2));
+							break;
+
+						}
+						case 7: {
+							checkExistence = 0;
+							break;
+						}
+						}
+					}
+					break;
+				}
+				}
+				break;
+			}
+			case 3: {
+				System.out.println("Maps Selected\nChoose from Following");
+				System.out.println("1.HashMap\n2.TreeMap\n3.LinkedHashMap");
+				int v = 1;
+				subCollectionSelector = input.nextInt();
+				checkExistence=1;
+				switch (subCollectionSelector) {
+				case 1: {
+					while (checkExistence == 1) {
+						System.out
+								.println("HashMap Selected\n Choose from following");
+						System.out
+								.println("1.Add\n2.Remove\n3.Replace\n4.View Map\n5.Exit");
+						option = input.nextInt();
+						checkExistence=1;
+						switch (option) {
+						case 1: {
+							System.out.println("Enter String");
+							str1 = input.next();
+							hMap.put(v++, str1);
+							System.out.println("String Added!");
+							break;
+						}
+						case 2: {
+							System.out.println("Enter Key:");
+							int h = input.nextInt();
+							hMap.remove(h);
+							break;
+						}
+						case 3: {
+							System.out.println("Enter Key:");
+							int h = input.nextInt();
+							System.out.println("Enter String:");
+							str1 = input.next();
+							hMap.put(h, str1);
+							break;
+						}
+						case 4: {
+							Set<Map.Entry<Integer, String>> set1 = hMap
+									.entrySet();
+							for (Map.Entry<Integer, String> me1 : set1) {
+								System.out.println(me1.getKey() + ":"
+										+ me1.getValue());
+							}
+							break;
+						}
+						case 5: {
+							checkExistence = 0;
+							break;
+						}
+						}
+					}
+					break;
+				}
+				case 2: {
+					while (checkExistence == 1) {
+						System.out
+								.println("TreeMap Selected\n Choose from following");
+						System.out
+								.println("1.Add\n2.Remove\n3.Replace\n4.View Map\n5.Exit");
+						option = input.nextInt();
+						checkExistence=1;
+						switch (option) {
+						case 1: {
+							System.out.println("Enter String");
+							str1 = input.next();
+							tMap.put(v++, str1);
+							System.out.println("String Added!");
+							break;
+						}
+						case 2: {
+							System.out.println("Enter Key:");
+							int h = input.nextInt();
+							tMap.remove(h);
+							break;
+						}
+						case 3: {
+							System.out.println("Enter Key:");
+							int h = input.nextInt();
+							System.out.println("Enter String:");
+							str1 = input.next();
+							tMap.put(h, str1);
+							break;
+						}
+						case 4: {
+							Set<Map.Entry<Integer, String>> set1 = tMap
+									.entrySet();
+							for (Map.Entry<Integer, String> me1 : set1) {
+								System.out.println(me1.getKey() + ":"
+										+ me1.getValue());
+							}
+							break;
+						}
+						case 5: {
+							checkExistence = 0;
+							break;
+						}
+						}
+					}
+					break;
+				}
+				case 3: {
+					while (checkExistence == 1) {
+						System.out
+								.println("LinkedHashMap Selected\n Choose from following");
+						System.out
+								.println("1.Add\n2.Remove\n3.Replace\n4.View Map\n5.Exit");
+						option = input.nextInt();
+						checkExistence=1;
+						switch (option) {
+						case 1: {
+							System.out.println("Enter String");
+							str1 = input.next();
+							lhMap.put(v++, str1);
+							System.out.println("String Added!");
+							break;
+						}
+						case 2: {
+							System.out.println("Enter Key:");
+							int h = input.nextInt();
+							lhMap.remove(h);
+							break;
+						}
+						case 3: {
+							System.out.println("Enter Key:");
+							int h = input.nextInt();
+							System.out.println("Enter String:");
+							str1 = input.next();
+							lhMap.put(h, str1);
+							break;
+						}
+						case 4: {
+							Set<Map.Entry<Integer, String>> set1 = lhMap
+									.entrySet();
+							for (Map.Entry<Integer, String> me1 : set1) {
+								System.out.println(me1.getKey() + ":"
+										+ me1.getValue());
+							}
+							break;
+						}
+						case 5: {
+							checkExistence = 0;
+							break;
+						}
+						}
+					}
+					break;
+				}
+				}
+				break;
+			}
+			case 4:System.out.println("Bye!");
+				x = 0;
+				break;
+
+			}
+		}
+	input.close();
+	}
+}
